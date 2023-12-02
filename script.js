@@ -37,6 +37,27 @@ function playGameRound() {
     return { result: gameRoundResult, message: gameRoundMessage };
 }
 
-const result = playGameRound();
-console.log("Game result: " + result.result);
-console.log(result.message);
+function playGame() {
+    let playerWins = 0;
+    let computerWins = 0;
+
+    while ((playerWins < 5) && (computerWins < 5)) {
+        const roundResult = playGameRound();
+
+        if (roundResult.result == true) {
+            playerWins++;
+        } else if (roundResult.result == false) {
+            computerWins++;
+        }
+
+        console.log("Player Wins: " + playerWins + "\nComputer Wins: " + computerWins);
+    }
+
+    if (playerWins == 5) {
+        console.log("Congratulations! You won!");
+    } else {
+        console.log("You lost the game. Better luck next time.");
+    }
+}
+
+playGame();
