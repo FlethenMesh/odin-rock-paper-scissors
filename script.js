@@ -26,7 +26,7 @@ function playGameRound() {
         gameRoundMessage = "Computer chose " + computerChoice + "\n=> You win!\n" + playerChoice + " beats " + computerChoice;
         gameRoundResult = true; //True for win conditions
     } else if ((playerChoice == "rock" && computerChoice == "paper") || (playerChoice == "paper" && computerChoice == "scissors") || (playerChoice == "scissors" && computerChoice == "rock")) {
-        gameRoundMessage = "Computer chose " + computerChoice +  + "\n=> You lose!\n" + computerChoice + " beats " + playerChoice;
+        gameRoundMessage = "Computer chose " + computerChoice + "\n=> You lose!\n" + computerChoice + " beats " + playerChoice;
         gameRoundResult = false; //False for lose conditions
     } else {
         const nextRound = playGameRound();
