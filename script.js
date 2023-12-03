@@ -2,14 +2,10 @@ function getPlayerChoice(choiceMessage = "Type rock, paper, or scissors: ", play
     let playerChoice;
     
     do {
-        playerChoice = document.getElementById("playerChoice").value.toLowerCase();
+        playerChoice = prompt(choiceMessage, playerOptions.join(', '));
+        playerChoice = playerChoice ? playerChoice.toLowerCase() : "";
     } while (!playerOptions.includes(playerChoice));
     return playerChoice;
-}
-
-function displayResult(resultMessage) {
-    const gameResultElement = document.getElementById("gameResult");
-    gameResultElement.textContent = resultMessage;
 }
 
 function getComputerChoice() {
@@ -19,26 +15,23 @@ function getComputerChoice() {
 }
 
 function playGameRound() {
-    const playerChoice = getPlayerChoice();
-    const computerChoice = getComputerChoice();    
-    
     let gameRoundResult;
     let gameRoundMessage;
 
+    const playerChoice = getPlayerChoice();
 
+    const computerChoice = getComputerChoice();
 
-    if ((playerChoice === "rock" && computerChoice === "scissors") || (playerChoice === "paper" && computerChoice === "rock") || (playerChoice === "scissors" && computerChoice === "paper")) {
+    if ((playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "scissors" && computerChoice == "paper")) {
         gameRoundMessage = "Computer chose " + computerChoice + "\n=> You win!\n" + playerChoice + " beats " + computerChoice;
         gameRoundResult = true; //True for win conditions
-    } else if ((playerChoice === "rock" && computerChoice === "paper") || (playerChoice === "paper" && computerChoice === "scissors") || (playerChoice === "scissors" && computerChoice === "rock")) {
-        gameRoundMessage = "Computer chose " + computerChoice  + "\n=> You lose!\n" + computerChoice + " beats " + playerChoice;
+    } else if ((playerChoice == "rock" && computerChoice == "paper") || (playerChoice == "paper" && computerChoice == "scissors") || (playerChoice == "scissors" && computerChoice == "rock")) {
+        gameRoundMessage = "Computer chose " + computerChoice +  + "\n=> You lose!\n" + computerChoice + " beats " + playerChoice;
         gameRoundResult = false; //False for lose conditions
     } else {
         gameRoundMessage = "Computer chose " + computerChoice + "\n=> Draw!";
-        gameRoundResult = null;
+        gameRoundResult = null; //Null for draw conditions
     }
-
-    displayResult(gameRoundMessage);
 
     return { result: gameRoundResult, message: gameRoundMessage };
 }
@@ -46,25 +39,24 @@ function playGameRound() {
 function playGame() {
     let playerWins = 0;
     let computerWins = 0;
-    let draws = 0;
 
     while ((playerWins < 5) && (computerWins < 5)) {
         const roundResult = playGameRound();
 
-        if (roundResult.result === true) {
+        if (roundResult.result == true) {
             playerWins++;
-        } else if (roundResult.result === false) {
+        } else if (roundResult.result == false) {
             computerWins++;
-        } else {
-            draws++;
         }
 
-        alert("Player Wins: " + playerWins + "\nComputer Wins: " + computerWins + "\nDraws: " + draws);
+        console.log("Player Wins: " + playerWins + "\nComputer Wins: " + computerWins);
     }
 
-    if (playerWins === 5) {
-        alert("Congratulations! You won!");
+    if (playerWins == 5) {
+        console.log("Congratulations! You won!");
     } else {
-        alert("You lost the game. Better luck next time.");
+        console.log("You lost the game. Better luck next time.");
     }
 }
+
+playGame();
