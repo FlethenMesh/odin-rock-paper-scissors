@@ -39,6 +39,7 @@ function playGameRound() {
 function playGame() {
     let playerWins = 0;
     let computerWins = 0;
+    let gameDraws = 0;
 
     while ((playerWins < 5) && (computerWins < 5)) {
         const roundResult = playGameRound();
@@ -47,9 +48,11 @@ function playGame() {
             playerWins++;
         } else if (roundResult.result == false) {
             computerWins++;
+        } else if (roundResult.result == null) {
+            gameDraws++;
         }
 
-        console.log("Player Wins: " + playerWins + "\nComputer Wins: " + computerWins);
+        console.log("Player Wins: " + playerWins + "\nComputer Wins: " + computerWins + "\nDraws: " + gameDraws);
     }
 
     if (playerWins == 5) {
@@ -58,5 +61,3 @@ function playGame() {
         console.log("You lost the game. Better luck next time.");
     }
 }
-
-playGame();
