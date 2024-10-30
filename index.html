@@ -3,11 +3,37 @@
     <head>
       <meta charset="UTF-8">
       <title>Rock Paper Scissors</title>
+      <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-      <h1>Rock Paper Scissors</h1>
-
+      <section id="header">
+        <div id="header-img-container">
+          <div id="header-img-tile">
+            <img class="header-img" src="./images/odin-rock.png" alt="Rock"></img>
+          </div>
+          <div id="header-img-tile">
+            <img class="header-img" src="./images/odin-paper.jpg" alt="Paper"></img>
+          </div>
+          <div id="header-img-tile">
+            <img class="header-img " src="./images/odin-scissors.png" alt="Scissors"></img>
+          </div>
+        </div>
+        <h1>Rock Paper Scissors</h1>
+      </section>
+      <div id="container">
+        <h2>Make your choice:</h2>
+        <div id="choices">
+          <button class="choice-button" data-choice="rock">Rock</button>
+          <button class="choice-button" data-choice="paper">Paper</button>
+          <button class="choice-button" data-choice="scissors">Scissors</button>
+        </div>
+        <div id="scoreboard">
+          <p>Player Score: <span id="player-score">0</span></p>
+          <p>Computer Score: <span id="computer-score">0</span></p>
+        </div>
+        <div id="result-message"></div>
+      </div>
       <script src="script.js"></script>
     </body>
 </html>
